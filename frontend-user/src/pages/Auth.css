@@ -1,0 +1,812 @@
+/* src/pages/Auth.css - Agricultural Theme with Natural Page Scrolling */
+
+/* Modern CSS Reset and Variables */
+:root {
+  --primary-green: #2e7d32;
+  --primary-green-dark: #1b5e20;
+  --primary-green-light: #4caf50;
+  --primary-green-soft: #66bb6a;
+  --white: #ffffff;
+  --off-white: #fafafa;
+  --text-primary: #2e3b2c;
+  --text-secondary: #5d6e5d;
+  --error-color: #d32f2f;
+  --success-color: #2e7d32;
+  --background: #f1f8e9;
+  --card-background: var(--white);
+  --border-color: #c8e6c9;
+  --shadow-sm: 0 1px 2px 0 rgba(46, 125, 50, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(46, 125, 50, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(46, 125, 50, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(46, 125, 50, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Container Styles - Natural Page Scrolling */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #4caf50 100%);
+  padding: 40px 16px;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Agricultural Decorative Elements */
+.auth-container::before {
+  content: '🌾';
+  position: absolute;
+  font-size: 300px;
+  opacity: 0.05;
+  bottom: -100px;
+  left: -100px;
+  pointer-events: none;
+}
+
+.auth-container::after {
+  content: '🌿';
+  position: absolute;
+  font-size: 250px;
+  opacity: 0.05;
+  top: -80px;
+  right: -80px;
+  pointer-events: none;
+}
+
+/* Card Styles - No Internal Scrolling */
+.auth-card {
+  background: var(--card-background);
+  border-radius: 20px;
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 32px 28px;
+  animation: slideUp 0.5s ease;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  /* Remove any overflow and max-height restrictions */
+  overflow: visible;
+  max-height: none;
+}
+
+.register-card {
+  max-width: 550px;
+}
+
+/* Remove custom scrollbar from card */
+.auth-card::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Styles */
+.auth-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.auth-header::before {
+  content: '🌱';
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+  animation: grow 2s ease-in-out infinite;
+}
+
+@keyframes grow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.auth-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Alert Messages */
+.error-alert,
+.success-alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  animation: shake 0.5s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.error-alert::before {
+  content: '⚠️';
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.success-alert::before {
+  content: '✅';
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.error-alert {
+  background: #ffebee;
+  color: var(--error-color);
+  border-left: 3px solid var(--error-color);
+}
+
+.success-alert {
+  background: #e8f5e9;
+  color: var(--success-color);
+  border-left: 3px solid var(--success-color);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Form Styles */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Input Styles */
+input, 
+select, 
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 14px;
+  transition: var(--transition);
+  background: var(--white);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+input.error {
+  border-color: var(--error-color);
+}
+
+input:disabled {
+  background: var(--background);
+  cursor: not-allowed;
+}
+
+.error-message {
+  font-size: 11px;
+  color: var(--error-color);
+  margin-top: 4px;
+}
+
+/* Password Field */
+.password-field {
+  position: relative;
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  z-index: 1;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.password-toggle:hover {
+  opacity: 1;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+  margin-top: 8px;
+}
+
+.strength-bar {
+  height: 3px;
+  border-radius: 2px;
+  transition: var(--transition);
+  margin-bottom: 4px;
+}
+
+.strength-bar.weak {
+  width: 33%;
+  background: #f44336;
+}
+
+.strength-bar.medium {
+  width: 66%;
+  background: #ff9800;
+}
+
+.strength-bar.strong {
+  width: 100%;
+  background: var(--primary-green);
+}
+
+.password-strength span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Checkbox Styles */
+.checkbox-group {
+  margin-top: 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.checkbox-label input {
+  width: auto;
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--primary-green);
+}
+
+.checkbox-label a {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.checkbox-label a:hover {
+  text-decoration: underline;
+}
+
+/* Button Styles */
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.auth-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.auth-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.register-button {
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+  color: var(--white);
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.3);
+}
+
+.auth-button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 8px;
+}
+
+.field-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #4caf50 100%);
+  padding: 40px 20px;
+}
+
+.dashboard-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-card h1 {
+  color: #2e7d32;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.user-info h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.info-card {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.info-card h3 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
+
+.info-card p {
+  margin: 10px 0;
+  padding: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 12px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout-button:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.dashboard-loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #4caf50 100%);
+  color: white;
+  font-size: 20px;
+}
+
+/* Add to Auth.css */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.forgot-link {
+  color: #2e7d32;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Add to Auth.css - Additional styles for forgot/reset password */
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.forgot-link {
+  color: #2e7d32;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+  color: #1b5e20;
+}
+
+/* Password strength indicator (optional) */
+.password-strength {
+  margin-top: 5px;
+}
+
+.strength-bar {
+  height: 3px;
+  border-radius: 2px;
+  transition: all 0.3s;
+  margin-bottom: 4px;
+}
+
+.strength-bar.weak {
+  width: 33%;
+  background: #dc3545;
+}
+
+.strength-bar.medium {
+  width: 66%;
+  background: #ffc107;
+}
+
+.strength-bar.strong {
+  width: 100%;
+  background: #28a745;
+}
+
+/* Home Link Styles */
+.home-link-container {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.home-link {
+  display: inline-block;
+  color: #2e7d32;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: #f5f5f5;
+}
+
+.home-link:hover {
+  background: #e8f5e9;
+  transform: translateX(-3px);
+}
+
+.home-footer-link {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.home-footer-link a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+
+.home-footer-link a:hover {
+  color: #1b5e20;
+  text-decoration: underline;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.auth-footer p {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.auth-footer a {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================ */
+/* RESPONSIVE DESIGN - NATURAL PAGE SCROLLING */
+/* ============================================ */
+
+/* Tablets and smaller desktops */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 30px 16px;
+  }
+  
+  .auth-card {
+    padding: 28px 24px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .auth-header h2 {
+    font-size: 26px;
+  }
+  
+  .auth-header::before {
+    font-size: 42px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 20px 12px;
+    align-items: flex-start;
+  }
+  
+  .auth-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  
+  .auth-header {
+    margin-bottom: 20px;
+  }
+  
+  .auth-header::before {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  
+  .auth-header h2 {
+    font-size: 24px;
+  }
+  
+  .auth-header p {
+    font-size: 12px;
+  }
+  
+  .auth-form {
+    gap: 16px;
+  }
+  
+  .form-group {
+    gap: 5px;
+  }
+  
+  .form-group label {
+    font-size: 12px;
+  }
+  
+  input, 
+  select, 
+  textarea {
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+  
+  .error-message {
+    font-size: 10px;
+  }
+  
+  .auth-button {
+    padding: 11px;
+    font-size: 14px;
+  }
+  
+  .checkbox-label {
+    font-size: 12px;
+  }
+  
+  .auth-footer {
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+  
+  .auth-footer p {
+    font-size: 12px;
+  }
+  
+  .error-alert,
+  .success-alert {
+    padding: 10px 12px;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .password-toggle {
+    right: 12px;
+    font-size: 16px;
+  }
+}
+
+/* Very small devices (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .auth-container {
+    padding: 16px 10px;
+  }
+  
+  .auth-card {
+    padding: 16px 14px;
+  }
+  
+  .auth-header h2 {
+    font-size: 22px;
+  }
+  
+  .auth-header::before {
+    font-size: 32px;
+  }
+  
+  input, 
+  select, 
+  textarea {
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+  
+  .auth-button {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+/* Landscape orientation - keep natural scrolling */
+@media (max-height: 600px) and (orientation: landscape) {
+  .auth-container {
+    padding: 20px 16px;
+  }
+  
+  .auth-card {
+    padding: 16px 20px;
+  }
+  
+  .auth-header {
+    margin-bottom: 16px;
+  }
+  
+  .auth-header::before {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+  
+  .auth-form {
+    gap: 12px;
+  }
+}
+
+/* Ensure all elements use box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Fix for input zoom on iOS - keep inputs readable */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input, 
+  select, 
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Small screens adjustment for iOS */
+@media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 0) {
+  input, 
+  select, 
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 768px) {
+  button, 
+  .auth-button,
+  .password-toggle,
+  .checkbox-label,
+  a {
+    touch-action: manipulation;
+  }
+}

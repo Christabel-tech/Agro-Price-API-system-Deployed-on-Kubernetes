@@ -1,0 +1,180 @@
+# ==============================
+# React / Node.js Frontend .gitignore
+# ==============================
+
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+.pnp.loader.mjs
+
+# Testing
+/coverage/
+/.nyc_output/
+/.jest/
+/screenshot-examples/
+
+# Production build
+/build/
+/dist/
+/.next/
+/out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+*.env
+!.env.example
+
+# Cache
+/.cache/
+/.parcel-cache/
+/.vite/
+/vite.config.js.timestamp-*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+*.history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build output
+storybook-static
+
+# rollup.js default build output
+dist/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional eslint cache
+.eslintcache
+
+# Vite
+.vite
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.zed/
+*.sublime-*
+Thumbs.db
+desktop.ini
+
+# Webpack files
+/webpack/
+
+# Temporary folders
+tmp/
+temp/
+.temp/
+
+# React specific
+/service-worker.js
+/service-worker.js.map
+/precache-manifest.*
+
+# Bundle analyzer report
+report.html
+stats.json
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.override.yml
+
+# Local development files
+*.local
+.local/
+
+# Environment example files (keep these)
+!.env.example
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Vim swap files
+*.swp
+*.swo
+*~
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettiercache
+
+# Stylelint
+.stylelintcache
+
+# Typescript
+*.tsbuildinfo
+
+# Webpack stats
+stats.json
